@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title> Eronzy CSS + JS Animation Playground</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <h1>Bringing Web Pages to Life with CSS & JavaScript</h1>
+    <p class="tag">Transitions • Keyframes • Functions • Scope • Events</p>
+  </header>
+
+  <main class="wrap">
+    <!-- ================================
+         PART 1 — CSS3 ONLY INTERACTIONS
+         ================================= -->
+    <section aria-labelledby="p1-title" class="card">
+      <h2 id="p1-title">🎨 Part 1: CSS3 Transitions & Keyframe Animations (No JS)</h2>
+      <p>Hover/tap the UI to see transitions; some items are time-based via <code>@keyframes</code>.</p>
+
+      <div class="grid">
+        <!-- Button hover: transition -->
+        <button class="btn">Hover Me (Transition)</button>
+
+        <!-- Looping animation: floating badge -->
+        <div class="badge" aria-hidden="true">Floating Badge</div>
+
+        <!-- Keyframes via class always-on -->
+        <div class="pulse-demo" aria-label="Pulsing circle"></div>
+
+        <!-- Card flip on hover (pure CSS) -->
+        <div class="flip-card" aria-label="CSS-only flip card">
+          <div class="flip-card-inner">
+            <div class="flip-card-face front">Front</div>
+            <div class="flip-card-face back">Back</div>
+          </div>
+        </div>
+      </div>
+      <p class="muted">All effects above are CSS-only.</p>
+    </section>
+
+    <!-- ======================================
+         PART 2 — JAVASCRIPT FUNCTIONS & SCOPE
+         ======================================= -->
+    <section aria-labelledby="p2-title" class="card">
+      <h2 id="p2-title">📚 Part 2: JavaScript Functions — Scope, Params & Return Values</h2>
+      <p>Click buttons to run functions that return values and demonstrate scope.</p>
+
+      <div class="panel">
+        <label for="durationMultiplier">Duration Multiplier (0.25–4):</label>
+        <input type="number" id="durationMultiplier" min="0.25" max="4" step="0.25" value="1" />
+        <button id="calcBtn" class="btn btn-outline">Calculate Duration</button>
+        <output id="calcResult" aria-live="polite"></output>
+      </div>
+
+      <div class="panel">
+        <button id="scopeBtn" class="btn">Show Scope Demo</button>
+        <pre id="scopeOut" class="pre" aria-live="polite"></pre>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         PART 3 — COMBINING: JS TRIGGERS CSS ANIMATIONS
+         ====================================================== -->
+    <section aria-labelledby="p3-title" class="card">
+      <h2 id="p3-title">🎬 Part 3: JS-Triggered CSS Animations</h2>
+
+      <div class="grid-2">
+        <!-- A) Button that animates a box when clicked -->
+        <div>
+          <h3>A) Animate the Box</h3>
+          <button id="animateBtn" class="btn">Run Slide-In</button>
+          <div class="playground">
+            <div id="box" class="box" aria-label="Animatable box"></div>
+          </div>
+        </div>
+
+        <!-- B) Card flip via click (JS adds class for accessibility/mobile) -->
+        <div>
+          <h3>B) Card Flip (Click)</h3>
+          <button id="flipBtn" class="btn btn-outline">Flip Card</button>
+          <div id="jsFlipCard" class="flip-card js-controlled" aria-label="JS flip card">
+            <div class="flip-card-inner">
+              <div class="flip-card-face front">Click to Flip</div>
+              <div class="flip-card-face back">Back via JS</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- C) Loading animation start/stop -->
+        <div>
+          <h3>C) Start/Stop Loader</h3>
+          <div class="controls">
+            <button id="startLoader" class="btn">Start</button>
+            <button id="stopLoader" class="btn btn-danger">Stop</button>
+          </div>
+          <div class="loader" id="loader" aria-label="Loader animation" aria-live="polite"></div>
+        </div>
+
+        <!-- D) Modal that slides in & fades out -->
+        <div>
+          <h3>D) Modal (Slide/Fade)</h3>
+          <button id="openModal" class="btn">Open Modal</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Accessible Modal -->
+  <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+    <div class="modal__panel">
+      <h4 id="modalTitle">Hello! I’m an animated modal 🎉</h4>
+      <p>This modal uses slide-in on open and fade-out on close, triggered by JS via class toggles.</p>
+      <div class="right">
+        <button id="closeModal" class="btn btn-outline">Close</button>
+      </div>
+    </div>
+    <div class="modal__backdrop" aria-hidden="true"></div>
+  </div>
+
+  <footer class="site-footer">
+    <small>Includes <code>prefers-reduced-motion</code> support and ARIA attributes.</small>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
